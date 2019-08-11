@@ -645,7 +645,7 @@ class HTTPConnectionPool(ConnectionPool, RequestMethods):
 
             is_new_proxy_conn = self.proxy is not None and not getattr(
                 conn, "sock", None
-            )
+            ) and self.scheme != 'https'
             if is_new_proxy_conn:
                 self._prepare_proxy(conn)
 
